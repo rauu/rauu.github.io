@@ -103,7 +103,11 @@ a {
 
 /*-------------RESPONSIVE MENU--------------------*/
 
+<<<<<<< HEAD
+@media (max-width: 1080px) {
+=======
 @media (max-width: 800px) {
+>>>>>>> f0b6a112100d1ca62c53da2be157c41b91bcd5e3
     /*Make dropdown links appear inline*/
     ul {
         position: static;
