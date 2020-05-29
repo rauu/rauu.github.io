@@ -235,7 +235,8 @@ footer {
 /*--------------------BANNER-------------------*/
 
 .slide-container {
-    width: 800px;
+    max-width: 50%;
+    min-width: 25%;
     margin: auto;
     border: 4px solid black;
     box-shadow: 5px 10px 10px black;
@@ -254,7 +255,7 @@ footer {
 
 .fotos {
     height: 400px;
-    width: 800px;
+    max-width: 100%;
     background-color: white;
 }
 
@@ -383,8 +384,7 @@ button {
     background-color: #ffffff;
     background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
     padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin: 10px;
     box-shadow: 5px 10px 10px black;
 }
 
@@ -433,7 +433,8 @@ button {
     font-size: 20px;
 }
 
-#titile_blog {
+#titile_blog,
+#img_blog {
     min-width: 900px;
     height: 30px;
 }
@@ -462,6 +463,7 @@ button {
 .new_post {
     width: 80%;
     margin: auto;
+    margin-bottom: 100px;
 }
 
 .new_title {

@@ -1,30 +1,3 @@
-// RANDOM PHOTOS
-/*dow.onload = function() {
-
-    function changeImage() {
-        var BackgroundImg = ["../IMAGES/background.jpg",
-            "../IMAGES/background2.jpg",
-            "../IMAGES/background3.jpg",
-            "../IMAGES/background4.jpg",
-            "../IMAGES/background5.jpg",
-            "../IMAGES/background7.jpg",
-
-        ];
-        var i = Math.floor((Math.random() * 6));
-        var body = document.getElementsByClassName("body")
-        document.body.style.backgroundImage = 'url("' + BackgroundImg[i] + '")';
-        document.body.style.backgroundRepeat = "no-repeat";
-        document.body.style.backgroundSize = window.outerWidth + "px", window.outerHeight + "px";
-        document.body.style.backgroundAttachment = "fixed";
-        document.body.style.backgroundSize = "cover";
-
-    }
-    window.setInterval(changeImage, 5000);
-}
-
-*/
-
-
 /*----------SCROLL DOWN-----------*/
 
 var prevScrollpos = window.pageYOffset;
@@ -128,18 +101,28 @@ function previous() {
 //Validar texto crear post
 
 var send = document.getElementById("send");
-send.onclick = validarTodo;
+send.onclick = crearDOM;
+
+var title = document.getElementById("titile_blog");
+var p_text = document.getElementById("p_title");
+var title_bool = false;
 
 function validarTitulo() {
-    var title = document.getElementById("titile_blog").value;
 
-    if (title == "") {
-        var p_text = document.getElementById("p_title");
-
+    if (title.value == "") {
         p_text.innerHTML = "El titulo no puede estar vacio";
         p_text.style.color = "red";
+        title.style.border = "2px solid red";
+        title_bool = false;
+    } else {
+        title.style.border = "2px solid green";
+        p_text.innerHTML = "Escriba el titulo:";
+        p_text.style.color = "white";
+        title_bool = true;
     }
 }
+
+title.addEventListener("blur", validarTitulo);
 
 /*function validarImagen() {
     var img_post = document.getElementById("img_blog").value;
@@ -154,29 +137,43 @@ function validarTitulo() {
 
 
 
+var p_texts = document.getElementById("p_texts");
+var p_blog = document.getElementById("text_blog");
+var text_bool = false;
 
 function validarText() {
-    var p_blog = document.getElementById("text_blog").value;
-    alert(p_blog);
-    if (p_blog == "") {
-        var p_texts = document.getElementById("p_texts");
-        p_texts.innerHTML = "El texto no puede estar vacio";
+
+    if (p_blog.value == "" || p_blog.value.length < 100) {
+        p_texts.innerHTML = "El texto no puede estar vacio o no puede tener menor que 100 palabras";
         p_texts.style.color = "red";
+        p_blog.style.border = "2px solid red";
+        text_bool = false;
     } else {
+        p_texts.innerHTML = "Pon el texto que quieras:";
+        p_texts.style.color = "white";
+        p_blog.style.border = "2px solid green";
+        text_bool = true;
+    }
+}
+
+p_blog.addEventListener("blur", validarText);
+
+
+function crearDOM() {
+
+    validarText();
+    validarTitulo();
+    if (title_bool && text_bool) {
+        alert("Se ha generado tu post");
         CrearPost();
     }
 }
 
-function validarTodo() {
-    validarTitulo();
-    //validarImagen();
-    validarText();
-}
 
 //CREAR DIV
 
 function CrearPost() {
-    window.open('./../HTML/ultimos-post.html', "_self");
+    var div_viejo = document.getElementById("content");
     var text_titulo = document.getElementById("titile_blog").value;
     var text_img = document.getElementById("img_blog").value;
     var post_text = document.getElementById("text_blog").value;
@@ -199,6 +196,6 @@ function CrearPost() {
     crearDiv.appendChild(crearImg);
 
     crearDiv.appendChild(crearP);
-    document.body.appendChild(crearDiv);
+    div_viejo.appendChild(crearDiv);
 
 }
