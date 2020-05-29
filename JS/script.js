@@ -124,3 +124,81 @@ function previous() {
     heading.innerHTML = head[value];
     image1.setAttribute("src", img[value]);
 }
+
+//Validar texto crear post
+
+var send = document.getElementById("send");
+send.onclick = validarTodo;
+
+function validarTitulo() {
+    var title = document.getElementById("titile_blog").value;
+
+    if (title == "") {
+        var p_text = document.getElementById("p_title");
+
+        p_text.innerHTML = "El titulo no puede estar vacio";
+        p_text.style.color = "red";
+    }
+}
+
+/*function validarImagen() {
+    var img_post = document.getElementById("img_blog").value;
+    if (/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(img_post.value)) {
+
+    } else {
+        var p_img = document.getElementById("img_blog");
+        p_img.innerHTML = "URL introducida es incorrecta, recuerda que debe de ser una imagen";
+        p_img.style.color = "red";
+    }
+}*/
+
+
+
+
+function validarText() {
+    var p_blog = document.getElementById("text_blog").value;
+    alert(p_blog);
+    if (p_blog == "") {
+        var p_texts = document.getElementById("p_texts");
+        p_texts.innerHTML = "El texto no puede estar vacio";
+        p_texts.style.color = "red";
+    } else {
+        CrearPost();
+    }
+}
+
+function validarTodo() {
+    validarTitulo();
+    //validarImagen();
+    validarText();
+}
+
+//CREAR DIV
+
+function CrearPost() {
+    window.open('./../HTML/ultimos-post.html', "_self");
+    var text_titulo = document.getElementById("titile_blog").value;
+    var text_img = document.getElementById("img_blog").value;
+    var post_text = document.getElementById("text_blog").value;
+
+    var crearDiv = document.createElement("div");
+    var crearP = document.createElement("p");
+    var crearImg = document.createElement("img");
+    var crearH = document.createElement("h2");
+
+    crearDiv.classList.add("new_post");
+    crearH.classList.add("new_title");
+    crearImg.classList.add("new_image");
+    crearImg.alt = "Imagen nueva";
+    crearP.classList.add("new_p");
+
+    crearImg.src = text_img;
+    crearH.innerHTML = text_titulo;
+    crearP.innerHTML = post_text;
+    crearDiv.appendChild(crearH);
+    crearDiv.appendChild(crearImg);
+
+    crearDiv.appendChild(crearP);
+    document.body.appendChild(crearDiv);
+
+}

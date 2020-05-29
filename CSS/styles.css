@@ -3,10 +3,8 @@
 }
 
 body {
-    background-image: url(../IMAGES/background3.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #878787;
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
 }
 
 
@@ -103,15 +101,7 @@ a {
 
 /*-------------RESPONSIVE MENU--------------------*/
 
-<<<<<<< HEAD
 @media (max-width: 1080px) {
-=======
-<<<<<<< HEAD
-@media (max-width: 1080px) {
-=======
-@media (max-width: 800px) {
->>>>>>> f0b6a112100d1ca62c53da2be157c41b91bcd5e3
->>>>>>> 0c4e9c0d6ec12c02709e9b0ae34e74d6fe4a37dc
     /*Make dropdown links appear inline*/
     ul {
         position: static;
@@ -155,6 +145,8 @@ footer {
 
 /*----------------------LOADER----------------------*/
 
+
+/*
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -236,6 +228,8 @@ footer {
     position: absolute;
     animation: spin 1.85s infinite linear;
 }
+
+*/
 
 
 /*--------------------BANNER-------------------*/
@@ -364,6 +358,8 @@ button {
     text-align: center;
     font-family: 'Typewriter', Arial;
     font-size: 40px;
+    font-style: italic;
+    text-decoration: underline;
 }
 
 .text {
@@ -380,7 +376,6 @@ button {
 .mejores-work {
     width: 80%;
     margin: auto;
-    box-shadow: 5px 10px 10px black;
 }
 
 .div_work {
@@ -390,6 +385,7 @@ button {
     padding: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    box-shadow: 5px 10px 10px black;
 }
 
 .contener {
@@ -412,13 +408,84 @@ button {
 }
 
 #crear_post {
-    background-color: #990000;
-    background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%);
     margin: auto;
     display: block;
+}
+
+#crear_post:hover {
+    background-color: #990000;
+    background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%);
 }
 
 #div_post {
     width: 100%;
     margin: auto;
+}
+
+
+/*Crear Posts*/
+
+#crear_post_div {
+    color: white;
+    font-family: 'Typewriter', Arial;
+    text-align: left;
+    padding-left: 300px;
+    font-size: 20px;
+}
+
+#titile_blog {
+    min-width: 900px;
+    height: 30px;
+}
+
+.input {
+    font-size: 18px;
+}
+
+#text_blog {
+    min-width: 900px;
+    height: 300px;
+}
+
+#send {
+    text-align: center;
+}
+
+#send:hover {
+    background-color: #990000;
+    background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%);
+}
+
+
+/*New Posts*/
+
+.new_post {
+    width: 80%;
+    margin: auto;
+}
+
+.new_title {
+    color: white;
+    font-family: 'Typewriter', Arial;
+    font-size: 30px;
+}
+
+.new_image {
+    height: 500px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.new_p {
+    color: white;
+    font-family: 'Typewriter', Arial;
+    font-size: 20px;
+}
+
+#ultimos_post {
+    color: white;
+    font-family: 'Typewriter', Arial;
+    text-align: center;
+    font-size: 50px;
 }
