@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Gymnastic Gym</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+
+    <link rel="icon" type="image/gif/png/ico" href="../IMAGES/title.gif">
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body onload="Loader()">
+    <div class="spinner" id="spinner">
+        <div class="outer"></div>
+        <div class="iner"></div>
+        <div class="inner"></div>
+        <div class="last"></div>
+    </div>
+
+    <header id="header_style">
+        <img src="../IMAGES/title.gif" id="titile">
+        <nav>
+            <ul class="nav" id="nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li id="li"><a>Zonas</a>
+                    <ul id="submenu">
+
+                        <li class="zonas"><a href="new_post.html">Crear posts</a></li>
+                        <li class="zonas"><a href="./ultimos-post.html">Ultimos post</a></li>
+                        <li class="zonas"><a href="todos_posts.html">Posts</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="./formulario.html">Contacto</a></li>
+            </ul>
+
+            <img src="./../IMAGES/menu.png" class="menu" id="show-menu" role="button">
+            <div id="res_nav"></div>
+        </nav>
+    </header>
+
+    <div class="content">
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <h1 id="h_form">CONTACT US</h1>
+        <br><br><br><br><br>
+        <div id="form_div">
+
+            <form>
+                <input type="hidden" name="recipient" value="raunakbinyani.binyani@gmail.com" />
+                <label>Name:</label>
+                <input type="text" class="input_form" name="firstname" maxlength="30" size="20" required><br><br>
+
+                <label>Surname:</label>
+                <input type="text" class="input_form" name="surname" maxlength="30" size="20" required><br><br>
+
+                <label>Date of birth</label>
+                <input type="date" class="input_form" name="bday" required><br><br>
+
+                <label>Email</label>
+                <input type="email" class="input_form" name="email" required><br><br>
+
+                <label for="country">Country</label>
+                <input type="text" class="input_form" name="contry" id="country" maxlength="30" size="20" required><br><br>
+
+                <label>Upload your photo:</label>
+                <input type="file" class="input_form" size="100"><br><br>
+
+
+                <label>Write your comment:</label>
+                <br>
+                <textarea name="comment" id="text_form"></textarea>
+
+                </br>
+                </br>
+                <button type="reset" id="reset_form">Reset form</button>
+                <button id="send_form">Send</button>
+            </form>
+
+        </div>
+
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+
+    </div>
+    <footer id="footer">
+        <h2>Raunak Binyani</h2>
+        <h3>Proyecto Final lenguaje de Marcas</h3>
+    </footer>
+    <script src="../JS/script.js"></script>
+</body>
+
+</html>

@@ -66,8 +66,9 @@ var but2 = document.getElementById("buttton2");
 
 
 
-var head = ["Click on the Image: 1", "Click on the Image: 2", "Click on the Image: 3", "Click on the Image: 4", "Click on the Image: 5", "Click on the Image: 6", "Click on the Image: 7", "Click on the Image: 8"];
-var img = ["../IMAGES/foto1.jpg", "../IMAGES/foto2.jpg", "../IMAGES/foto3.jpg", "../IMAGES/foto4.jpg", "../IMAGES/foto5.jpg", "../IMAGES/foto6.jpg", "../IMAGES/foto7.jpg", "../IMAGES/foto8.jpg"];
+var head = ["LOS 10 MEJORES BLOGS DE FITNESS", "BUSCA EL GIMNASIO MAS CERCA DE TU CASA", "COMPRA TU NUTRICION DEPORTIVA"];
+var img = ["../IMAGES/foto1.jpg", "../IMAGES/foto2.jpg", "../IMAGES/foto3.jpg"];
+var src = ["https://look4bloggers.com/los-10-mejores-blogs-fitness/", "https://mygymanywhere.com/", "https://www.powergym.com/es/"];
 var value = 0;
 
 function next() {
@@ -80,6 +81,7 @@ function next() {
     }
     heading.innerHTML = head[value];
     image1.setAttribute("src", img[value]);
+    heading.setAttribute("href", src[value]);
 
 }
 window.setInterval(next, 5000);
@@ -124,17 +126,40 @@ function validarTitulo() {
 
 title.addEventListener("blur", validarTitulo);
 
-/*function validarImagen() {
+
+
+var img = document.getElementById("img_blog");
+var img_bool = false;
+
+function checkUrl() {
     var img_post = document.getElementById("img_blog").value;
-    if (/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(img_post.value)) {
-
-    } else {
-        var p_img = document.getElementById("img_blog");
-        p_img.innerHTML = "URL introducida es incorrecta, recuerda que debe de ser una imagen";
-        p_img.style.color = "red";
+    var arr = ["jpeg", "jpg", "gif", "png"];
+    var ext = img_post.substring(img_post.lastIndexOf(".") + 1);
+    for (var x = 0; x <= arr.length; x++) {
+        if (ext == arr[x]) {
+            img_bool = true;
+            break;
+        }
     }
-}*/
+}
 
+
+var img_text = document.getElementById("image_blog");
+
+function validarImg() {
+    checkUrl();
+    if (img_bool) {
+        img.style.border = "2px solid green";
+        img_text.style.color = "white";
+        img_text.innerHTML = "Pon el URL del imagen: (recuerda que el URL solo puede ser una imagen)";
+    } else {
+        img_text.innerHTML = "La URL esta mal. Recuerde que tiene que ser JPG, JPG, GIF o PNG";
+        img_text.style.color = "red";
+        img.style.border = "2px solid red";
+    }
+}
+img.addEventListener("blur", validarImg);
+img.addEventListener("blur", checkUrl);
 
 
 var p_texts = document.getElementById("p_texts");
@@ -163,12 +188,21 @@ function crearDOM() {
 
     validarText();
     validarTitulo();
-    if (title_bool && text_bool) {
+    validarImg();
+    if (title_bool && text_bool && img_bool) {
         alert("Se ha generado tu post");
         CrearPost();
     }
 }
+var contador = 0;
 
+
+function CrearContador(nombre_id) {
+
+    nombre_id += contador;
+    contador++;
+    return nombre_id;
+}
 
 //CREAR DIV
 
@@ -182,7 +216,17 @@ function CrearPost() {
     var crearP = document.createElement("p");
     var crearImg = document.createElement("img");
     var crearH = document.createElement("h2");
+    var crearBr = document.createElement("br");
 
+    var input = document.createElement("input");
+    input.setAttribute("type", "button");
+    input.setAttribute("value", "Eliminar");
+    var crear_class = CrearContador("post");
+    input.setAttribute('name', crear_class);
+    input.classList.add("button");
+    crearDiv.setAttribute('name', crear_class);
+
+    input.classList.add("button");
     crearDiv.classList.add("new_post");
     crearH.classList.add("new_title");
     crearImg.classList.add("new_image");
@@ -195,7 +239,47 @@ function CrearPost() {
     crearDiv.appendChild(crearH);
     crearDiv.appendChild(crearImg);
 
+
     crearDiv.appendChild(crearP);
+    crearDiv.appendChild(crearBr);
+    crearDiv.appendChild(input);
     div_viejo.appendChild(crearDiv);
 
+    input.setAttribute('onclick', 'EliminarDiv(name)');
+
 }
+
+//Eliminar post
+function EliminarDiv(class_nombre) {
+    var div_eliminar = document.getElementsByName(class_nombre)[0];
+    div_eliminar.parentNode.removeChild(div_eliminar);
+    alert("Se ha eliminado tu post");
+
+}
+
+//FORM
+
+var text_form_bool = false;
+
+
+function Form_comment() {
+
+    alert("Fdf");
+    var text_form = document.getElementById("text_form");
+    alert(text_form.value);
+    if (text_form.value == "" || text_form.value.length < 100) {
+        alert("El mensaje no puede estar vacio o tener menos que 100 palabras");
+        text_form.style.border = "2px solid red";
+        text_form_bool = false;
+    } else {
+        text_form.style.border = "2px solid green";
+        text_form_bool = true;
+        alert("Se ha enviado tu comentario");
+
+    }
+}
+
+//text_form.addEventListener("blur", Form_comment);
+
+var send_form = document.getElementById("send_form");
+send_form.onclick = Form_comment;
